@@ -1,5 +1,8 @@
 The purpose of this table is to help compare the number of possible bits that could be used as entropy bits in IDs that are commonly used to produce unique values.  
-Some IDs require coordination to prevent collisions. Techniques such as prefixing a timestamp, namespace, node id or similar are not evaluated intentionally.  
+Some IDs require coordination to prevent collisions. Techniques such as prefixing a timestamp, namespace, node id or similar are not evaluated intentionally. 
+
+I made this quickly and I need to double check the math.  The collision risk column is the square root of the total number of permutations of each ID.  We take the
+square root of that value to estimate the probability of a 50% collision based only on the total number of potential entropy bits. 
 
 | ID Name       | Bits in Native Format | Max Entropy Bits | Reasoning | Collision Risk (Base 10) |
 | ------------- | --------------------- | ---------------- | --------- | ------------------------ |
