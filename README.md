@@ -9,7 +9,7 @@ The intent of this table is to help estimate collision potential only using the 
 
 
 
-| ID Name       | Bits in Native Format | Max Entropy Bits | Reasoning | ~50% Collision Risk |
+| ID Name       | Bits in Native Format | Max Entropy Bits | Reasoning | Number of IDs required for ~50% Collision Risk |
 | ------------- | --------------------- | ---------------- | --------- | ------------------------ |
 | Snowflake     | 64                    | 22               | Snowflake allocates 22 bits for randomness, with the rest being for timestamp and machine ID. | 2,097 |
 | FlakeID       | 64                    | 41               | Similar to ShardingID, FlakeID is based on a timestamp, a node ID, and a sequence number. | 130,768 |
