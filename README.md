@@ -1,3 +1,6 @@
+The purpose of this table is to help compare the number of possible bits that could be used as entropy bits in IDs that are commonly used to produce unique values.  
+Some IDs require coordination to prevent collisions. Techniques such as prefixing a timestamp, namespace, node id or similar are not evaluated intentionally.  
+
 | ID Name       | Bits in Native Format | Max Entropy Bits | Reasoning | Collision Risk (Base 10) |
 | ------------- | --------------------- | ---------------- | --------- | ------------------------ |
 | Snowflake     | 64                    | 22               | Snowflake allocates 22 bits for randomness, with the rest being for timestamp and machine ID. | 2,097 |
