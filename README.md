@@ -7,13 +7,13 @@ square root of total possible permutations to estimate the probability of a 50% 
 
 The intent of this table is to help estimate collision potential only using the bits that could be used for entropy in each ID format. 
 
-
+This is a work in progress and I'm still checking for errors.
 
 | ID Name       | Bits in Native Format | Max Entropy Bits | Reasoning | Number of IDs required for ~50% Collision Risk |
 | ------------- | --------------------- | ---------------- | --------- | ------------------------ |
-| Snowflake     | 64                    | 22               | Snowflake allocates 22 bits for randomness, with the rest being for timestamp and machine ID. | 2,097 |
-| FlakeID       | 64                    | 41               | Similar to ShardingID, FlakeID is based on a timestamp, a node ID, and a sequence number. | 130,768 |
-| ShardingID    | 64                    | 41               | ShardingID is essentially a timestamp plus a shard ID and an auto-incrementing sequence number. The auto-incrementing part can be considered random, hence the 41 bits. | 130,768 |
+| Snowflake     | 64                    | 22               | We can use the snowflake node id and sequence number for a total of 22 entropy bits. | 2,097 |
+| FlakeID       | 64                    | 22               | FlakeID consists of a 42-bit timestamp, 5-bit datacenter ID, 5-bit worker ID, and a 12-bit counter. The counter and the identifiers provide the entropy. | 2,097 |
+| ShardID       | 64                    | 23               | ShardID consists of a 41-bit timestamp, 13-bit logical shard ID, and a 10-bit auto-incrementing sequence. The shard ID and sequence provide the entropy. | 4,190 |
 | ObjectID      | 96                    | 63               | Similar to XID, MongoDB's ObjectID has the same components and hence similar entropy. | 2,320,229,388 |
 | XID           | 96                    | 63               | XID consists of a 4-byte timestamp, 3-byte machine ID, 2-byte process ID, and 3-byte incrementing counter. The counter can be considered entropy. | 2,320,229,388 |
 | pushID        | 112                   | 72               | Firebase pushID includes a timestamp, a client ID, and a per-process counter. The client ID and the counter part have entropy. | 42,024,647,484 |
