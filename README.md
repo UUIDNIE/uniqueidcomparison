@@ -1,4 +1,5 @@
 The purpose of this table is to help compare the number of possible bits that could be used as entropy bits in unique ID formats.  
+
 Some IDs require coordination to reduce collision potential. Techniques such as prefixing a timestamp, namespace, node id, monotonic ticks or similar are not evaluated intentionally. 
 
 The collision risk column is the square root of the total number of possible permutations of each ID based on total possible entropy bits.  We take the
@@ -8,7 +9,7 @@ The intent of this table is to help estimate collision potential only using the 
 
 
 
-| ID Name       | Bits in Native Format | Max Entropy Bits | Reasoning | Collision Risk (Base 10) |
+| ID Name       | Bits in Native Format | Max Entropy Bits | Reasoning | ~50% Collision Risk |
 | ------------- | --------------------- | ---------------- | --------- | ------------------------ |
 | Snowflake     | 64                    | 22               | Snowflake allocates 22 bits for randomness, with the rest being for timestamp and machine ID. | 2,097 |
 | FlakeID       | 64                    | 41               | Similar to ShardingID, FlakeID is based on a timestamp, a node ID, and a sequence number. | 130,768 |
