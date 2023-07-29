@@ -31,19 +31,16 @@ This is a work in progress and I'm still checking for errors.
 | UUIDv4        | 128                   | 122              | UUIDv4 includes a few bits set aside for version (4) and variant information, leaving 122 bits for random or pseudo-random values, hence the entropy. | 1,318,433,449,495,883,392 |
 | XUID256       | 256                   | 196              | XUID256 concatenates UUIDv4 and UUIDv7, hence the entropy is the sum of the entropy bits of UUIDv4 and UUIDv7. | 22,627,417,000,000,000,000,000,000,000,000 |
 
-
-Binary layouts:
-```+-----------------------------------------------------------+
-| Snowflake ID Binary Layout                                |
-|                                                           |
-| 0                   1                   2                   3 |
+| Snowflake ID Binary Layout |
+| |
+| 0 1 2 3 |
 | 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 |
 |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|
-|                    Timestamp (41 bits)                       |
+| Timestamp (41 bits) |
 |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|
-| Timestamp |    Machine ID   |      Sequence Number          |
+| Timestamp | Machine ID | Sequence Number |
 |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|
-|    Machine ID (cont.)     |      Sequence Number (cont.)   |
+| Machine ID (cont.) | Sequence Number (cont.) |
 |+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+|
-|                                                           |
-+-----------------------------------------------------------+```
+| |
++-----------------------------------------------------------+
