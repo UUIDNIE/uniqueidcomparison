@@ -12,12 +12,12 @@ This is a work in progress and I'm still checking for errors.
 | ID Name       | Bits in Native Format | Max Entropy Bits | Reasoning | Number of IDs required for ~50% Collision Risk |
 | ------------- | --------------------- | ---------------- | --------- | ------------------------ |
 | Snowflake     | 64                    | 22               | We can use the snowflake node id and sequence number for a total of 22 entropy bits. | 2,097 |
-| FlakeID       | 64                    | 22               | FlakeID consists of a 42-bit timestamp, 5-bit datacenter ID, 5-bit worker ID, and a 12-bit counter. The counter and the identifiers provide the entropy. | 2,097 |
 | ShardID       | 64                    | 23               | ShardID consists of a 41-bit timestamp, 13-bit logical shard ID, and a 10-bit auto-incrementing sequence. The shard ID and sequence provide the entropy. | 4,190 |
 | ObjectID      | 96                    | 63               | Similar to XID, MongoDB's ObjectID has the same components and hence similar entropy. | 2,320,229,388 |
 | XID           | 96                    | 63               | XID consists of a 4-byte timestamp, 3-byte machine ID, 2-byte process ID, and 3-byte incrementing counter. The counter can be considered entropy. | 2,320,229,388 |
 | pushID        | 112                   | 72               | Firebase pushID includes a timestamp, a client ID, and a per-process counter. The client ID and the counter part have entropy. | 42,024,647,484 |
-| Elasticflake  | 128                   | 64               | Elasticflake includes a timestamp, a sequence, and a machine ID, similar to Sonyflake, hence the entropy comes from the sequence. | 2,814,749,767 |
+| Elasticflake  | 128                   | 64               | Elasticflake,we can use machine ID + sequence to inject entropy. | 2,814,749,767 |
+| FlakeID       | 128                   | 64               | FlakeID includes a timestamp, a sequence, and a machine ID, we can use machine ID + sequence to inject entropy. | 2,814,749,767 |
 | Sonyflake     | 128                   | 64               | Sonyflake is similar to Snowflake but with 128-bit IDs. It includes a timestamp, a sequence, and a machine ID, and the sequence is the entropy part. | 2,814,749,767 |
 | UUIDv7        | 128                   | 74               | UUIDv7 includes a 48-bit timestamp, 4-bit version, 2-bit variant, and two random fields (rand_a and rand_b) with 12 and 62 bits respectively, hence the entropy is the sum of the two random fields. | 13,553,082,591 |
 | Flake         | 128                   | 80               | Flake has a timestamp and a random component similar to ULID. | 1,000,000,000,000 |
